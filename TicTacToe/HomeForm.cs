@@ -1,5 +1,6 @@
 using TicTacToe.Utils;
 using TicTacToe.User;
+using TicTacToe.Forms;
 
 namespace TicTacToe {
     public partial class HomeForm : Form {
@@ -9,7 +10,10 @@ namespace TicTacToe {
             // set font
             new Window().SetFont((ControlCollection)this.Controls);
 
-            // initialize loginS
+            // start position
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+            // initialize login
             Login login = new Login();
             login.CheckFirst();
 
@@ -19,8 +23,11 @@ namespace TicTacToe {
             });*/
 
             // login state handler
-            //login.SetLogin("oskarpetr");
             LoginState(login.GetLogin());
+
+            // score
+            Account account = login.GetLogin();
+            _labelScore.Text = $"{account.Score} Score ({account.GetLevel()} Level)";
         }
 
         // login states
@@ -33,23 +40,28 @@ namespace TicTacToe {
             // username
             _labelSubtitle.Text = $"Logged in as {account.Username}.";
 
-            // statistics
+            // remove no stats
             _panel.Controls.Remove(_labelNoStats);
-                
-            // wins label
-            Label wins = new();
-            wins.Text = $"Wins — {account.Wins}";
-            wins.Dock = DockStyle.Top;
-            wins.Font = new Font("SF Pro Rounded", 11);
-            wins.ForeColor = Color.FromArgb(64, 64, 64);
 
-            _panel.Controls.Add(wins);
-        }
+            // statistics labels
+            int[] values = new int[] { account.Wins, account.Score, account.Bombs };
+            string[] labels = new string[] { "Wins", "Score", "Bombs" };
 
-        private void _labelStats_Click(object sender, EventArgs e) {
-            LoginState(new Login().GetLogin());
+            for (int i = 0; i < values.Length; i++) {
+                Label wins = new();
+                wins.Text = $"{labels[i]} - {values[i]}";
+                wins.Font = new Font("SF Pro Rounded", 11);
+                wins.ForeColor = Color.FromArgb(64, 64, 64);
+                wins.Dock = DockStyle.Top;
+                wins.Padding = new Padding(0, 5, 0, 0);
+
+                _panelStats.Controls.Add(wins);
+            }
         }
 
         // menu actions
+        private void _menuLogin_Click(object sender, EventArgs e) {
+            new Move().Screen(new LoginForm());      
+        }
     }
 }

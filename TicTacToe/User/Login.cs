@@ -74,6 +74,12 @@ namespace TicTacToe.User {
             foreach (string item in accountItems) {
                 ToolStripItem tool = new ToolStripMenuItem(item);
                 account.DropDownItems.Add(tool);
+
+                if (item == accountItems[0] && form.GetType() != typeof(ProfileForm)) {
+                    tool.Click += Profile_Click;
+                } else if (item == accountItems[1]) {
+                    tool.Click += LogOut_Click;
+                }
             }
         }
 
@@ -83,6 +89,15 @@ namespace TicTacToe.User {
 
         private void Shop_Click(object? sender, EventArgs e) {
             new Move().Screen(new ShopForm());
+        }
+
+        private void Profile_Click(object? sender, EventArgs e) {
+            new Move().Screen(new ProfileForm());
+        }
+
+        private void LogOut_Click(object? sender, EventArgs e) {
+            new Login().SetLogin(string.Empty);
+            new Move().Screen(new HomeForm());
         }
     }
 }

@@ -44,5 +44,13 @@ namespace TicTacToe.User {
             Account account = accounts.FirstOrDefault(acc => acc.Username == username);
             return account;
         }
+
+        public int GetLevel() {
+            Login login = new Login();
+            Account account = login.GetLogin();
+
+            int level = 1;
+            return level + account.Score / 50;
+        }
     }
 }

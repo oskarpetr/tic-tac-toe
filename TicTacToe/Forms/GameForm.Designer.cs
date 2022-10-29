@@ -30,10 +30,31 @@
             this._menuLogin = new System.Windows.Forms.ToolStripMenuItem();
             this._menuRegister = new System.Windows.Forms.ToolStripMenuItem();
             this._panel = new System.Windows.Forms.Panel();
+            this._labelScore = new System.Windows.Forms.Label();
+            this._square2 = new System.Windows.Forms.PictureBox();
+            this._square5 = new System.Windows.Forms.PictureBox();
+            this._square7 = new System.Windows.Forms.PictureBox();
+            this._square4 = new System.Windows.Forms.PictureBox();
+            this._square6 = new System.Windows.Forms.PictureBox();
+            this._square3 = new System.Windows.Forms.PictureBox();
+            this._square1 = new System.Windows.Forms.PictureBox();
+            this._square8 = new System.Windows.Forms.PictureBox();
+            this._square0 = new System.Windows.Forms.PictureBox();
+            this._imageBoard = new System.Windows.Forms.PictureBox();
             this._labelSubtitle = new System.Windows.Forms.Label();
             this._labelTitle = new System.Windows.Forms.Label();
             this._menu.SuspendLayout();
             this._panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._square2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._square5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._square7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._square4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._square6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._square3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._square1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._square8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._square0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._imageBoard)).BeginInit();
             this.SuspendLayout();
             // 
             // _menu
@@ -84,6 +105,17 @@
             // 
             this._panel.AutoSize = true;
             this._panel.BackColor = System.Drawing.Color.Transparent;
+            this._panel.Controls.Add(this._labelScore);
+            this._panel.Controls.Add(this._square2);
+            this._panel.Controls.Add(this._square5);
+            this._panel.Controls.Add(this._square7);
+            this._panel.Controls.Add(this._square4);
+            this._panel.Controls.Add(this._square6);
+            this._panel.Controls.Add(this._square3);
+            this._panel.Controls.Add(this._square1);
+            this._panel.Controls.Add(this._square8);
+            this._panel.Controls.Add(this._square0);
+            this._panel.Controls.Add(this._imageBoard);
             this._panel.Controls.Add(this._labelSubtitle);
             this._panel.Controls.Add(this._labelTitle);
             this._panel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -92,6 +124,119 @@
             this._panel.Padding = new System.Windows.Forms.Padding(50, 30, 50, 30);
             this._panel.Size = new System.Drawing.Size(1262, 647);
             this._panel.TabIndex = 6;
+            // 
+            // _labelScore
+            // 
+            this._labelScore.BackColor = System.Drawing.Color.Transparent;
+            this._labelScore.Font = new System.Drawing.Font("SF Pro Rounded", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this._labelScore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this._labelScore.Location = new System.Drawing.Point(995, 30);
+            this._labelScore.Name = "_labelScore";
+            this._labelScore.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this._labelScore.Size = new System.Drawing.Size(217, 21);
+            this._labelScore.TabIndex = 17;
+            this._labelScore.Text = "Score";
+            this._labelScore.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // _square2
+            // 
+            this._square2.Location = new System.Drawing.Point(730, 82);
+            this._square2.Name = "_square2";
+            this._square2.Size = new System.Drawing.Size(160, 160);
+            this._square2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._square2.TabIndex = 16;
+            this._square2.TabStop = false;
+            this._square2.Click += new System.EventHandler(this._square_Click);
+            // 
+            // _square5
+            // 
+            this._square5.Location = new System.Drawing.Point(730, 252);
+            this._square5.Name = "_square5";
+            this._square5.Size = new System.Drawing.Size(160, 160);
+            this._square5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._square5.TabIndex = 15;
+            this._square5.TabStop = false;
+            this._square5.Click += new System.EventHandler(this._square_Click);
+            // 
+            // _square7
+            // 
+            this._square7.Location = new System.Drawing.Point(560, 422);
+            this._square7.Name = "_square7";
+            this._square7.Size = new System.Drawing.Size(160, 160);
+            this._square7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._square7.TabIndex = 14;
+            this._square7.TabStop = false;
+            this._square7.Click += new System.EventHandler(this._square_Click);
+            // 
+            // _square4
+            // 
+            this._square4.Location = new System.Drawing.Point(560, 252);
+            this._square4.Name = "_square4";
+            this._square4.Size = new System.Drawing.Size(160, 160);
+            this._square4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._square4.TabIndex = 13;
+            this._square4.TabStop = false;
+            this._square4.Click += new System.EventHandler(this._square_Click);
+            // 
+            // _square6
+            // 
+            this._square6.Location = new System.Drawing.Point(390, 422);
+            this._square6.Name = "_square6";
+            this._square6.Size = new System.Drawing.Size(160, 160);
+            this._square6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._square6.TabIndex = 12;
+            this._square6.TabStop = false;
+            this._square6.Click += new System.EventHandler(this._square_Click);
+            // 
+            // _square3
+            // 
+            this._square3.Location = new System.Drawing.Point(390, 252);
+            this._square3.Name = "_square3";
+            this._square3.Size = new System.Drawing.Size(160, 160);
+            this._square3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._square3.TabIndex = 11;
+            this._square3.TabStop = false;
+            this._square3.Click += new System.EventHandler(this._square_Click);
+            // 
+            // _square1
+            // 
+            this._square1.Location = new System.Drawing.Point(560, 82);
+            this._square1.Name = "_square1";
+            this._square1.Size = new System.Drawing.Size(160, 160);
+            this._square1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._square1.TabIndex = 10;
+            this._square1.TabStop = false;
+            this._square1.Click += new System.EventHandler(this._square_Click);
+            // 
+            // _square8
+            // 
+            this._square8.Location = new System.Drawing.Point(730, 422);
+            this._square8.Name = "_square8";
+            this._square8.Size = new System.Drawing.Size(160, 160);
+            this._square8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._square8.TabIndex = 9;
+            this._square8.TabStop = false;
+            this._square8.Click += new System.EventHandler(this._square_Click);
+            // 
+            // _square0
+            // 
+            this._square0.Location = new System.Drawing.Point(390, 82);
+            this._square0.Name = "_square0";
+            this._square0.Size = new System.Drawing.Size(160, 160);
+            this._square0.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._square0.TabIndex = 8;
+            this._square0.TabStop = false;
+            this._square0.Click += new System.EventHandler(this._square_Click);
+            // 
+            // _imageBoard
+            // 
+            this._imageBoard.Image = global::TicTacToe.Properties.Resources.Board;
+            this._imageBoard.Location = new System.Drawing.Point(390, 82);
+            this._imageBoard.Name = "_imageBoard";
+            this._imageBoard.Size = new System.Drawing.Size(500, 500);
+            this._imageBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._imageBoard.TabIndex = 7;
+            this._imageBoard.TabStop = false;
             // 
             // _labelSubtitle
             // 
@@ -133,6 +278,16 @@
             this._menu.PerformLayout();
             this._panel.ResumeLayout(false);
             this._panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._square2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._square5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._square7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._square4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._square6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._square3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._square1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._square8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._square0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._imageBoard)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,12 +301,18 @@
         private ToolStripMenuItem _menuLogin;
         private ToolStripMenuItem _menuRegister;
         private Panel _panel;
-        private Label _labelStatsValues;
-        private Label _labelStats;
-        private Label _labelUsername;
-        private Label _labelWelcome;
-        private Label _labelHeading;
         private Label _labelSubtitle;
         private Label _labelTitle;
+        private PictureBox _square2;
+        private PictureBox _square5;
+        private PictureBox _square7;
+        private PictureBox _square4;
+        private PictureBox _square6;
+        private PictureBox _square3;
+        private PictureBox _square1;
+        private PictureBox _square8;
+        private PictureBox _square0;
+        private Label _labelScore;
+        private PictureBox _imageBoard;
     }
 }

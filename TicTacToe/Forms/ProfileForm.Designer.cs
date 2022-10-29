@@ -1,5 +1,5 @@
 ﻿namespace TicTacToe.Forms {
-    partial class ShopForm {
+    partial class ProfileForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShopForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProfileForm));
             this._menu = new System.Windows.Forms.MenuStrip();
             this._menuHome = new System.Windows.Forms.ToolStripMenuItem();
             this._menuAccount = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +46,7 @@
             this._menu.Location = new System.Drawing.Point(0, 0);
             this._menu.Name = "_menu";
             this._menu.Size = new System.Drawing.Size(1262, 26);
-            this._menu.TabIndex = 3;
+            this._menu.TabIndex = 9;
             // 
             // _menuHome
             // 
@@ -92,7 +92,7 @@
             this._panel.Name = "_panel";
             this._panel.Padding = new System.Windows.Forms.Padding(50, 30, 50, 30);
             this._panel.Size = new System.Drawing.Size(1262, 647);
-            this._panel.TabIndex = 8;
+            this._panel.TabIndex = 10;
             // 
             // _labelSubtitle
             // 
@@ -103,9 +103,9 @@
             this._labelSubtitle.Location = new System.Drawing.Point(50, 78);
             this._labelSubtitle.Name = "_labelSubtitle";
             this._labelSubtitle.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this._labelSubtitle.Size = new System.Drawing.Size(158, 26);
+            this._labelSubtitle.Size = new System.Drawing.Size(166, 26);
             this._labelSubtitle.TabIndex = 5;
-            this._labelSubtitle.Text = "Buy what you need.";
+            this._labelSubtitle.Text = "Your account details.";
             // 
             // _labelTitle
             // 
@@ -115,11 +115,11 @@
             this._labelTitle.ForeColor = System.Drawing.SystemColors.ControlText;
             this._labelTitle.Location = new System.Drawing.Point(50, 30);
             this._labelTitle.Name = "_labelTitle";
-            this._labelTitle.Size = new System.Drawing.Size(115, 48);
+            this._labelTitle.Size = new System.Drawing.Size(138, 48);
             this._labelTitle.TabIndex = 4;
-            this._labelTitle.Text = "Shop";
+            this._labelTitle.Text = "Profile";
             // 
-            // ShopForm
+            // ProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -128,8 +128,8 @@
             this.Controls.Add(this._panel);
             this.Controls.Add(this._menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "ShopForm";
-            this.Text = "Tic Tac Toe";
+            this.Name = "ProfileForm";
+            this.Text = "Tic tac toe";
             this._menu.ResumeLayout(false);
             this._menu.PerformLayout();
             this._panel.ResumeLayout(false);
@@ -141,13 +141,13 @@
 
         #endregion
 
+        private Panel _panel;
+        private Label _labelSubtitle;
+        private Label _labelTitle;
         private MenuStrip _menu;
         private ToolStripMenuItem _menuHome;
         private ToolStripMenuItem _menuAccount;
         private ToolStripMenuItem _menuLogin;
         private ToolStripMenuItem _menuRegister;
-        private Panel _panel;
-        private Label _labelSubtitle;
-        private Label _labelTitle;
     }
 }

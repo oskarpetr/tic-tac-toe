@@ -11,8 +11,8 @@ using TicTacToe.Utils;
 using TicTacToe.User;
 
 namespace TicTacToe.Forms {
-    public partial class ShopForm : Form {
-        public ShopForm() {
+    public partial class ProfileForm : Form {
+        public ProfileForm() {
             InitializeComponent();
 
             // set font

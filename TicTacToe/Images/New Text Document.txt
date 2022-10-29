@@ -1,0 +1,48 @@
+// return static evaluation
+            if (depth == 0 || CheckWinner(board) != Winner.NoWinner) {
+                int empty = 1;
+
+                // empty squares
+                for (int i = 0; i < board.GetLength(0); i++) {
+                    for (int j = 0; j < board.GetLength(1); j++) {
+                        if(board[i, j] == ' ') empty++;
+                    }
+                }
+
+                if (CheckWinner(board) == Winner.O) return 1 * empty;
+                else if (CheckWinner(board) == Winner.Draw) return 0;
+                else if (CheckWinner(board) == Winner.X) return -1 * empty;
+            }
+
+            // available moves
+            List<char[,]> moves = new List<char[,]>();
+            for (int i = 0; i < board.GetLength(0); i++) {
+                for (int j = 0; j < board.GetLength(1); j++) {
+                    if (board[i, j] == ' ') {
+                        char[,] move = (char[,])board.Clone();
+                        move[i, j] = ai ? 'o' : 'x';
+                        moves.Add(move);
+                    }
+                }
+            }
+
+            // maximazing
+            if (ai) {
+                int max = int.MinValue;
+                for (int i = 0; i < moves.Count; i++) {
+                    int evaluation = Minimax(moves[i], depth - 1, false);
+                    max = Math.Max(evaluation, max);
+                }
+
+                return max;
+            
+            // minimazing
+            } else {
+                int min = int.MaxValue;
+                for (int i = 0; i < moves.Count; i++) {
+                    int evaluation = Minimax(moves[i], depth - 1, true);
+                    min = Math.Min(evaluation, min);
+                }
+
+                return min;
+            }

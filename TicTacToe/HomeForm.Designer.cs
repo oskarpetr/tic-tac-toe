@@ -30,10 +30,12 @@
             this._menuLogin = new System.Windows.Forms.ToolStripMenuItem();
             this._menuRegister = new System.Windows.Forms.ToolStripMenuItem();
             this._panel = new System.Windows.Forms.Panel();
+            this._labelScore = new System.Windows.Forms.Label();
             this._labelNoStats = new System.Windows.Forms.Label();
             this._labelStats = new System.Windows.Forms.Label();
             this._labelSubtitle = new System.Windows.Forms.Label();
             this._labelTitle = new System.Windows.Forms.Label();
+            this._panelStats = new System.Windows.Forms.Panel();
             this._menu.SuspendLayout();
             this._panel.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +77,7 @@
             this._menuLogin.Name = "_menuLogin";
             this._menuLogin.Size = new System.Drawing.Size(143, 26);
             this._menuLogin.Text = "Login";
+            this._menuLogin.Click += new System.EventHandler(this._menuLogin_Click);
             // 
             // _menuRegister
             // 
@@ -86,16 +89,29 @@
             // 
             this._panel.AutoSize = true;
             this._panel.BackColor = System.Drawing.Color.Transparent;
+            this._panel.Controls.Add(this._labelScore);
             this._panel.Controls.Add(this._labelNoStats);
             this._panel.Controls.Add(this._labelStats);
             this._panel.Controls.Add(this._labelSubtitle);
             this._panel.Controls.Add(this._labelTitle);
-            this._panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._panel.Dock = System.Windows.Forms.DockStyle.Top;
             this._panel.Location = new System.Drawing.Point(0, 26);
             this._panel.Name = "_panel";
-            this._panel.Padding = new System.Windows.Forms.Padding(50, 30, 50, 30);
-            this._panel.Size = new System.Drawing.Size(1262, 647);
-            this._panel.TabIndex = 7;
+            this._panel.Padding = new System.Windows.Forms.Padding(50, 30, 50, 0);
+            this._panel.Size = new System.Drawing.Size(1262, 208);
+            this._panel.TabIndex = 8;
+            // 
+            // _labelScore
+            // 
+            this._labelScore.BackColor = System.Drawing.Color.Transparent;
+            this._labelScore.Font = new System.Drawing.Font("SF Pro Rounded", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this._labelScore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this._labelScore.Location = new System.Drawing.Point(995, 30);
+            this._labelScore.Name = "_labelScore";
+            this._labelScore.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this._labelScore.Size = new System.Drawing.Size(217, 21);
+            this._labelScore.TabIndex = 18;
+            this._labelScore.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // _labelNoStats
             // 
@@ -148,12 +164,24 @@
             this._labelTitle.TabIndex = 4;
             this._labelTitle.Text = "Welcome to Tic Tac Toe!";
             // 
+            // _panelStats
+            // 
+            this._panelStats.AutoSize = true;
+            this._panelStats.BackColor = System.Drawing.Color.Transparent;
+            this._panelStats.Dock = System.Windows.Forms.DockStyle.Top;
+            this._panelStats.Location = new System.Drawing.Point(0, 234);
+            this._panelStats.Name = "_panelStats";
+            this._panelStats.Padding = new System.Windows.Forms.Padding(50, 0, 50, 30);
+            this._panelStats.Size = new System.Drawing.Size(1262, 30);
+            this._panelStats.TabIndex = 9;
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(227)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(1262, 673);
+            this.Controls.Add(this._panelStats);
             this.Controls.Add(this._panel);
             this.Controls.Add(this._menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -175,16 +203,12 @@
         private ToolStripMenuItem _menuHome;
         private ToolStripMenuItem _menuLogin;
         private ToolStripMenuItem _menuRegister;
-        private ToolStripMenuItem accountToolStripMenuItem;
-        private Label _labelWelcome;
-        private Label _labelUsername;
-        private Label _labelStats;
-        private Label _labelStatsValues;
         private Panel _panel;
-        private Label _labelHeading;
-        private Label _labelSubheading;
-        private Label _labelTitle;
-        private Label _labelSubtitle;
         private Label _labelNoStats;
+        private Label _labelStats;
+        private Label _labelSubtitle;
+        private Label _labelTitle;
+        private Panel _panelStats;
+        private Label _labelScore;
     }
 }
