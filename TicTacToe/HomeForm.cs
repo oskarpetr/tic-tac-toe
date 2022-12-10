@@ -24,15 +24,14 @@ namespace TicTacToe {
 
             // login state handler
             LoginState(login.GetLogin());
-
-            // score
-            Account account = login.GetLogin();
-            _labelScore.Text = $"{account.Score} Score ({account.GetLevel()} Level)";
         }
 
         // login states
         public void LoginState(Account account) {
             if (account == null) return;
+
+            // score
+            _labelScore.Text = $"{account.Score} Score ({account.GetLevel()} Level)";
 
             // menu state
             new Login().MenuState(_menu, this);
@@ -62,6 +61,10 @@ namespace TicTacToe {
         // menu actions
         private void _menuLogin_Click(object sender, EventArgs e) {
             new Move().Screen(new LoginForm());      
+        }
+
+        private void _menuRegister_Click(object sender, EventArgs e) {
+            new Move().Screen(new RegisterForm());
         }
     }
 }

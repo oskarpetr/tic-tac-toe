@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace TicTacToe.User {
@@ -18,18 +19,25 @@ namespace TicTacToe.User {
         private const string ACCOUNTS = "accounts.data";
 
         public void SaveAccount(Account account) {
+            List<Account> accounts = GetAccounts();
+
             using (var stream = File.Open(ACCOUNTS, FileMode.OpenOrCreate)) {
                 BinaryFormatter formatter = new();
 
-                List<Account> accounts = GetAccounts();
                 accounts.Add(account);
                 formatter.Serialize(stream, accounts);
             }
         }
 
-        public Account UpdateAccount(string username) {
-            Account account = GetAccount(username);
-            return account;
+        public void UpdateAccount(string username, Account account) {
+            List<Account> accounts = GetAccounts();
+            int index = accounts.FindIndex(acc => acc.Username == username);
+            
+            accounts[index] = account;
+            using (var stream = File.Open(ACCOUNTS, FileMode.Create)) {
+                BinaryFormatter formatter = new();
+                formatter.Serialize(stream, accounts);
+            }
         }
 
         public List<Account> GetAccounts() {

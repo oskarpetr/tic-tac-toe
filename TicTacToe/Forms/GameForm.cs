@@ -15,6 +15,7 @@ namespace TicTacToe.Forms {
     public partial class GameForm : Form {
         // new game
         private Game game = new Game();
+        private Game.Winner _winner = Game.Winner.NoWinner;
 
         public GameForm() {
             InitializeComponent();
@@ -28,7 +29,9 @@ namespace TicTacToe.Forms {
 
             // score
             Account account = login.GetLogin();
-            _labelScore.Text = $"{account.Score} Score ({account.GetLevel()} Level)";
+            if (account != null) {
+                _labelScore.Text = $"{account.Score} Score ({account.GetLevel()} Level)";
+            }
         }
 
         // game
@@ -43,29 +46,121 @@ namespace TicTacToe.Forms {
 
             // get square position
             int position = int.Parse(square.Name[square.Name.Length - 1].ToString());
-            bool player = rounds % 2 == 0;
 
             // update board and UI
-            game.Board[position / 3][position % 3] = player ? 'x' : 'o';
-            square.Image = player ? Properties.Resources.X : Properties.Resources.O;
-
-            int move = game.Minimax(new List<List<char?>>() {
-                new() { 'x', null, 'o' },
-                new() { 'o', 'o', 'x' },
-                new() { 'o', null, 'x' },
-            }, 3, true);
+            game.Board[position / 3][position % 3] = 'x';
+            square.Image = Properties.Resources.X;
 
             // if player won
             if (game.CheckWinner(game.Board) != Game.Winner.NoWinner) {
+                WinForm win = new WinForm(game.CheckWinner(game.Board));
+                _winner = game.CheckWinner(game.Board);
+
+                win.Show();
+
+                int centerX = this.Left + (this.Width / 2) - (win.Width / 2);
+                int centerY = this.Top + (this.Height / 2) - (win.Height / 2);
+                win.DesktopLocation = new Point(centerX, centerY);
+
+                win.OnHomeClicked += Win_OnHomeClicked;
+                win.OnNextClicked += Win_OnNextClicked;
+
+                return;
+            }
+
+            // ai makes move
+            MakeAIMove();
+
+
+            // if player won
+            if (game.CheckWinner(game.Board) != Game.Winner.NoWinner) {
+                WinForm win = new WinForm(game.CheckWinner(game.Board));
+                _winner = game.CheckWinner(game.Board);
+
+                win.Show();
+
+                int centerX = this.Left + (this.Width / 2) - (win.Width / 2);
+                int centerY = this.Top + (this.Height / 2) - (win.Height / 2);
+                win.DesktopLocation = new Point(centerX, centerY);
+
                 return;
             }
 
             rounds++;
         }
 
+        private void Win_OnNextClicked() {
+            AddScore();
+            new Move().Screen(new GameForm());
+        }
+        
+        private void Win_OnHomeClicked() {
+            AddScore();
+            new Move().Screen(new HomeForm());
+        }
+
+        public void MakeAIMove() {
+            int empty = 0;
+            List<int> available = new List<int>();
+
+            // empty squares
+            for (int i = 0; i < game.Board.Count; i++) {
+                for (int j = 0; j < game.Board[i].Count; j++) {
+                    if (game.Board[i][j] == null) {
+                        empty++;
+                        available.Add(i * 3 + j);
+                    }
+                }
+            }
+
+            int move = -1;
+
+            if(empty == 8) {
+                int random = new Random().Next(0, available.Count);
+                move = available[random];
+            } else {
+                move = game.Minimax(game.Board, 8, true);
+            }
+
+            PictureBox square = (PictureBox)_panel.Controls.Find($"_square{move}", true)[0];
+
+            // make move
+            game.Board[move / 3][move % 3] = 'o';
+            square.Image = Properties.Resources.O;
+        }
+
+        private void AddScore() {
+            int score = 0;
+
+            if (_winner == Game.Winner.X) { score = 25; }
+            else if (_winner == Game.Winner.Draw) { score = 10; }
+
+            // add score
+            if (_winner == Game.Winner.X || _winner == Game.Winner.Draw) {
+                Login login = new Login();
+                Account account = login.GetLogin();
+
+                new Account().UpdateAccount(account.Username, new Account() {
+                    Username = account.Username,
+                    Password = account.Password,
+                    Bombs = account.Bombs,
+                    Wins = account.Wins,
+                    Score = account.Score + score
+                });
+            }
+
+            // hide current screen
+            Form form = Application.OpenForms.Cast<Form>().Last();
+            form.Close();
+        }
+
         // menu actions
         private void _menuHome_Click(object sender, EventArgs e) {
             new Move().Screen(new HomeForm());
+        }
+
+        private void _menuRegister_Click(object sender, EventArgs e) {
+            new Move().Screen(new RegisterForm());
         }
     }
 }

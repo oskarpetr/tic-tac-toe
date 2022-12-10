@@ -49,7 +49,7 @@
             this._menuAccount});
             this._menu.Location = new System.Drawing.Point(0, 0);
             this._menu.Name = "_menu";
-            this._menu.Size = new System.Drawing.Size(1262, 26);
+            this._menu.Size = new System.Drawing.Size(1262, 28);
             this._menu.TabIndex = 2;
             // 
             // _menuHome
@@ -58,7 +58,7 @@
             this._menuHome.Font = new System.Drawing.Font("SF Pro Rounded", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this._menuHome.ForeColor = System.Drawing.SystemColors.ControlText;
             this._menuHome.Name = "_menuHome";
-            this._menuHome.Size = new System.Drawing.Size(60, 22);
+            this._menuHome.Size = new System.Drawing.Size(60, 24);
             this._menuHome.Text = "Home";
             // 
             // _menuAccount
@@ -69,21 +69,22 @@
             this._menuAccount.Font = new System.Drawing.Font("SF Pro Rounded", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this._menuAccount.ForeColor = System.Drawing.SystemColors.ControlText;
             this._menuAccount.Name = "_menuAccount";
-            this._menuAccount.Size = new System.Drawing.Size(76, 22);
+            this._menuAccount.Size = new System.Drawing.Size(76, 24);
             this._menuAccount.Text = "Account";
             // 
             // _menuLogin
             // 
             this._menuLogin.Name = "_menuLogin";
-            this._menuLogin.Size = new System.Drawing.Size(143, 26);
+            this._menuLogin.Size = new System.Drawing.Size(224, 26);
             this._menuLogin.Text = "Login";
             this._menuLogin.Click += new System.EventHandler(this._menuLogin_Click);
             // 
             // _menuRegister
             // 
             this._menuRegister.Name = "_menuRegister";
-            this._menuRegister.Size = new System.Drawing.Size(143, 26);
+            this._menuRegister.Size = new System.Drawing.Size(224, 26);
             this._menuRegister.Text = "Register";
+            this._menuRegister.Click += new System.EventHandler(this._menuRegister_Click);
             // 
             // _panel
             // 
@@ -95,7 +96,7 @@
             this._panel.Controls.Add(this._labelSubtitle);
             this._panel.Controls.Add(this._labelTitle);
             this._panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this._panel.Location = new System.Drawing.Point(0, 26);
+            this._panel.Location = new System.Drawing.Point(0, 28);
             this._panel.Name = "_panel";
             this._panel.Padding = new System.Windows.Forms.Padding(50, 30, 50, 0);
             this._panel.Size = new System.Drawing.Size(1262, 208);
@@ -169,7 +170,7 @@
             this._panelStats.AutoSize = true;
             this._panelStats.BackColor = System.Drawing.Color.Transparent;
             this._panelStats.Dock = System.Windows.Forms.DockStyle.Top;
-            this._panelStats.Location = new System.Drawing.Point(0, 234);
+            this._panelStats.Location = new System.Drawing.Point(0, 236);
             this._panelStats.Name = "_panelStats";
             this._panelStats.Padding = new System.Windows.Forms.Padding(50, 0, 50, 30);
             this._panelStats.Size = new System.Drawing.Size(1262, 30);

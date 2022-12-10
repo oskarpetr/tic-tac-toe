@@ -50,7 +50,84 @@ namespace TicTacToe.Utils {
             return Winner.NoWinner;
         }
 
+        int runs = 0;
+        int nodes = 0;
         public int Minimax(List<List<char?>> board, int depth, bool ai) {
+            runs++;
+            nodes++;
+
+            // return static value
+            if (depth == 0 || CheckWinner(board) != Winner.NoWinner) {
+                return StaticValue(board);
+            }
+
+            // available moves
+            List<List<List<char?>>> moves = new();
+
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (board[i][j] == null) {
+                        List<List<char?>> move = board.ConvertAll(item => new List<char?>(item));
+
+                        move[i][j] = ai ? 'o' : 'x';
+                        moves.Add(move);
+
+                        continue;
+                    }
+                }
+            }
+
+            // maximazing
+            if (ai) {
+                int max = int.MinValue;
+
+                for (int i = 0; i < moves.Count; i++) {
+                    int evaluation = Minimax(moves[i], depth - 1, false);
+                    max = Math.Max(evaluation, max);
+                }
+
+                // check if at top of tree
+                if (board.Equals(Board) && nodes > 1) {
+                    int biggest = int.MinValue;
+                    int index = 0;
+
+                    // search for biggest static value
+                    for (int i = 0; i < moves.Count; i++) {
+                        if (StaticValue(moves[i]) > biggest) {
+                            biggest = StaticValue(moves[i]);
+                            index = i;
+                        }
+                    }
+
+                    // check for difference
+                    int difference = -1;
+
+                    for (int i = 0; i < moves[index].Count; i++) {
+                        for (int j = 0; j < moves[index][i].Count; j++) {
+                            if (moves[index][i][j] != Board[i][j]) difference = i * 3 + j;
+                        }
+                    }
+
+                    return difference;
+                } else {
+                    return max;
+                }
+            }
+
+            // minimazing
+            else {
+                int min = int.MaxValue;
+
+                for (int i = 0; i < moves.Count; i++) {
+                    int evaluation = Minimax(moves[i], depth - 1, true);
+                    min = Math.Min(evaluation, min);
+                }
+
+                return min;
+            }
+        }
+
+        public int StaticValue(List<List<char?>> board) {
             int empty = 1;
 
             // empty squares
@@ -60,11 +137,11 @@ namespace TicTacToe.Utils {
                 }
             }
 
-            /*if (CheckWinner(board) == Winner.O) return 1 * empty;
+            if (CheckWinner(board) == Winner.O) return 1 * empty;
             else if (CheckWinner(board) == Winner.Draw) return 0;
-            else if (CheckWinner(board) == Winner.X) return -1 * empty;*/
+            else if (CheckWinner(board) == Winner.X) return -1 * empty;
 
-            return 99;
+            else return 0;
         }
     }
 }

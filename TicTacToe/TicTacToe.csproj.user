@@ -13,7 +13,13 @@
     <Compile Update="Forms\ProfileForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\RegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\ShopForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\WinForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="HomeForm.cs">

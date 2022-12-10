@@ -48,5 +48,9 @@ namespace TicTacToe.Forms {
             new Login().SetLogin(username);
             new Move().Screen(new HomeForm());
         }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e) {
+            new Move().Screen(new HomeForm());
+        }
     }
 }
