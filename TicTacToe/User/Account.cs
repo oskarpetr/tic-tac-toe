@@ -14,6 +14,7 @@ namespace TicTacToe.User {
         public int Wins { get; set; } = 0;
         public int Score { get; set; } = 0;
         public int Bombs { get; set; } = 0;
+        public int BombCounter { get; set; } = 1;
 
         // file storage
         private const string ACCOUNTS = "accounts.data";

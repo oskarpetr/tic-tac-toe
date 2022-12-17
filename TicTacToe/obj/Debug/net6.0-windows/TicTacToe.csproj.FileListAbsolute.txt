@@ -20,6 +20,5 @@ C:\Users\oskar\source\repos\kyberna\TicTacToe\TicTacToe\obj\Debug\net6.0-windows
 C:\Users\oskar\source\repos\kyberna\TicTacToe\TicTacToe\obj\Debug\net6.0-windows\TicTacToe.HomeForm.resources
 C:\Users\oskar\source\repos\kyberna\TicTacToe\TicTacToe\obj\Debug\net6.0-windows\TicTacToe.Forms.ShopForm.resources
 C:\Users\oskar\source\repos\kyberna\TicTacToe\TicTacToe\obj\Debug\net6.0-windows\TicTacToe.Controls.Input.resources
-C:\Users\oskar\source\repos\kyberna\TicTacToe\TicTacToe\obj\Debug\net6.0-windows\TicTacToe.Forms.ProfileForm.resources
 C:\Users\oskar\source\repos\kyberna\TicTacToe\TicTacToe\obj\Debug\net6.0-windows\TicTacToe.Forms.WinForm.resources
 C:\Users\oskar\source\repos\kyberna\TicTacToe\TicTacToe\obj\Debug\net6.0-windows\TicTacToe.Forms.RegisterForm.resources

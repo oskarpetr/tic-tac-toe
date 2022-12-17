@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using TicTacToe.Utils;
 using TicTacToe.User;
+using System.Media;
 
 namespace TicTacToe.Forms {
     public partial class GameForm : Form {
@@ -32,6 +33,9 @@ namespace TicTacToe.Forms {
             if (account != null) {
                 _labelScore.Text = $"{account.Score} Score ({account.GetLevel()} Level)";
             }
+
+            // bombs
+            _labelBombs.Text = $"{account.Bombs} bombs";
         }
 
         // game
@@ -39,33 +43,51 @@ namespace TicTacToe.Forms {
         private void _square_Click(object sender, EventArgs e) {
             PictureBox square = (PictureBox)sender;
 
-            // if player wants interact after game
-            if (game.CheckWinner(game.Board) != Game.Winner.NoWinner) {
-                return;
-            }
-
             // get square position
             int position = int.Parse(square.Name[square.Name.Length - 1].ToString());
 
-            // update board and UI
-            game.Board[position / 3][position % 3] = 'x';
-            square.Image = Properties.Resources.X;
+            if(bombMode) {
+                square.Image = Properties.Resources.Bomb;
+                Sleep(1000);
 
-            // if player won
-            if (game.CheckWinner(game.Board) != Game.Winner.NoWinner) {
-                WinForm win = new WinForm(game.CheckWinner(game.Board));
-                _winner = game.CheckWinner(game.Board);
+                using (var soundPlayer = new SoundPlayer("explosion.wav")) {
+                    soundPlayer.Play();
+                }
 
-                win.Show();
+                Sleep(2000);
+                square.Image = null;
 
-                int centerX = this.Left + (this.Width / 2) - (win.Width / 2);
-                int centerY = this.Top + (this.Height / 2) - (win.Height / 2);
-                win.DesktopLocation = new Point(centerX, centerY);
+                bombMode = false;
+            } else { 
+                // if player wants interact after game
+                if (game.CheckWinner(game.Board) != Game.Winner.NoWinner) {
+                    return;
+                }
 
-                win.OnHomeClicked += Win_OnHomeClicked;
-                win.OnNextClicked += Win_OnNextClicked;
+                // update board and UI
+                if (game.Board[position / 3][position % 3] != 'o') { 
+                    game.Board[position / 3][position % 3] = 'x';
+                    square.Image = Properties.Resources.X;
+                } else {
+                    return;
+                }
 
-                return;
+                // if player won
+                if (game.CheckWinner(game.Board) != Game.Winner.NoWinner) {
+                    WinForm win = new WinForm(game.CheckWinner(game.Board));
+                    _winner = game.CheckWinner(game.Board);
+
+                    win.Show();
+
+                    int centerX = this.Left + (this.Width / 2) - (win.Width / 2);
+                    int centerY = this.Top + (this.Height / 2) - (win.Height / 2);
+                    win.DesktopLocation = new Point(centerX, centerY);
+
+                    win.OnHomeClicked += Win_OnHomeClicked;
+                    win.OnNextClicked += Win_OnNextClicked;
+
+                    return;
+                }
             }
 
             // ai makes move
@@ -87,6 +109,15 @@ namespace TicTacToe.Forms {
             }
 
             rounds++;
+        }
+
+        private void Sleep(int time) {
+            Thread thread = new Thread(delegate() {
+                System.Threading.Thread.Sleep(time);
+            });
+
+            thread.Start();
+            while (thread.IsAlive) Application.DoEvents();
         }
 
         private void Win_OnNextClicked() {
@@ -143,8 +174,9 @@ namespace TicTacToe.Forms {
                 new Account().UpdateAccount(account.Username, new Account() {
                     Username = account.Username,
                     Password = account.Password,
-                    Bombs = account.Bombs,
-                    Wins = account.Wins,
+                    Bombs = account.Bombs + (account.BombCounter == 3 ? 1 : 0),
+                    BombCounter = (account.BombCounter == 4 ? 1 : account.BombCounter + 1),
+                    Wins = account.Wins + (_winner == Game.Winner.X ? 1 : 0),
                     Score = account.Score + score
                 });
             }
@@ -161,6 +193,35 @@ namespace TicTacToe.Forms {
 
         private void _menuRegister_Click(object sender, EventArgs e) {
             new Move().Screen(new RegisterForm());
+        }
+
+        private bool bombMode = false;
+        private void _buttonBomb_Click(object sender, EventArgs e) {
+            Login login = new Login();
+            Account account = login.GetLogin();
+
+            // not enough
+            if (account.Bombs < 1) {
+                MessageBox.Show(
+                    "You have not enough bombs in your account. Try winning some more games to earn some.",
+                    "Not enough bombs",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
+            else {
+                bombMode = true;
+
+                new Account().UpdateAccount(account.Username, new Account() {
+                    Username = account.Username,
+                    Password = account.Password,
+                    Bombs = account.Bombs - 1,
+                    BombCounter = account.BombCounter,
+                    Wins = account.Wins,
+                    Score = account.Score
+                });
+            }
         }
     }
 }

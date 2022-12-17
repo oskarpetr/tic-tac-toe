@@ -30,6 +30,9 @@
             this._menuLogin = new System.Windows.Forms.ToolStripMenuItem();
             this._menuRegister = new System.Windows.Forms.ToolStripMenuItem();
             this._panel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this._buttonBomb = new System.Windows.Forms.Button();
+            this._labelBombs = new System.Windows.Forms.Label();
             this._labelScore = new System.Windows.Forms.Label();
             this._square2 = new System.Windows.Forms.PictureBox();
             this._square5 = new System.Windows.Forms.PictureBox();
@@ -45,6 +48,7 @@
             this._labelTitle = new System.Windows.Forms.Label();
             this._menu.SuspendLayout();
             this._panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._square2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._square5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._square7)).BeginInit();
@@ -66,7 +70,7 @@
             this._menuAccount});
             this._menu.Location = new System.Drawing.Point(0, 0);
             this._menu.Name = "_menu";
-            this._menu.Size = new System.Drawing.Size(1262, 28);
+            this._menu.Size = new System.Drawing.Size(1262, 26);
             this._menu.TabIndex = 3;
             // 
             // _menuHome
@@ -74,7 +78,7 @@
             this._menuHome.Font = new System.Drawing.Font("SF Pro Rounded", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this._menuHome.ForeColor = System.Drawing.SystemColors.ControlText;
             this._menuHome.Name = "_menuHome";
-            this._menuHome.Size = new System.Drawing.Size(60, 24);
+            this._menuHome.Size = new System.Drawing.Size(60, 22);
             this._menuHome.Text = "Home";
             this._menuHome.Click += new System.EventHandler(this._menuHome_Click);
             // 
@@ -86,25 +90,28 @@
             this._menuAccount.Font = new System.Drawing.Font("SF Pro Rounded", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this._menuAccount.ForeColor = System.Drawing.SystemColors.ControlText;
             this._menuAccount.Name = "_menuAccount";
-            this._menuAccount.Size = new System.Drawing.Size(76, 24);
+            this._menuAccount.Size = new System.Drawing.Size(76, 22);
             this._menuAccount.Text = "Account";
             // 
             // _menuLogin
             // 
             this._menuLogin.Name = "_menuLogin";
-            this._menuLogin.Size = new System.Drawing.Size(224, 26);
+            this._menuLogin.Size = new System.Drawing.Size(143, 26);
             this._menuLogin.Text = "Login";
             // 
             // _menuRegister
             // 
             this._menuRegister.Name = "_menuRegister";
-            this._menuRegister.Size = new System.Drawing.Size(224, 26);
+            this._menuRegister.Size = new System.Drawing.Size(143, 26);
             this._menuRegister.Text = "Register";
             // 
             // _panel
             // 
             this._panel.AutoSize = true;
             this._panel.BackColor = System.Drawing.Color.Transparent;
+            this._panel.Controls.Add(this.pictureBox1);
+            this._panel.Controls.Add(this._buttonBomb);
+            this._panel.Controls.Add(this._labelBombs);
             this._panel.Controls.Add(this._labelScore);
             this._panel.Controls.Add(this._square2);
             this._panel.Controls.Add(this._square5);
@@ -119,11 +126,40 @@
             this._panel.Controls.Add(this._labelSubtitle);
             this._panel.Controls.Add(this._labelTitle);
             this._panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._panel.Location = new System.Drawing.Point(0, 28);
+            this._panel.Location = new System.Drawing.Point(0, 26);
             this._panel.Name = "_panel";
             this._panel.Padding = new System.Windows.Forms.Padding(50, 30, 50, 30);
-            this._panel.Size = new System.Drawing.Size(1262, 645);
+            this._panel.Size = new System.Drawing.Size(1262, 647);
             this._panel.TabIndex = 6;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::TicTacToe.Properties.Resources.Bomb;
+            this.pictureBox1.Location = new System.Drawing.Point(922, 212);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            // 
+            // _buttonBomb
+            // 
+            this._buttonBomb.Location = new System.Drawing.Point(922, 245);
+            this._buttonBomb.Name = "_buttonBomb";
+            this._buttonBomb.Size = new System.Drawing.Size(128, 29);
+            this._buttonBomb.TabIndex = 19;
+            this._buttonBomb.Text = "Use a bomb";
+            this._buttonBomb.UseVisualStyleBackColor = true;
+            this._buttonBomb.Click += new System.EventHandler(this._buttonBomb_Click);
+            // 
+            // _labelBombs
+            // 
+            this._labelBombs.AutoSize = true;
+            this._labelBombs.Location = new System.Drawing.Point(958, 222);
+            this._labelBombs.Name = "_labelBombs";
+            this._labelBombs.Size = new System.Drawing.Size(55, 20);
+            this._labelBombs.TabIndex = 18;
+            this._labelBombs.Text = "Bombs";
             // 
             // _labelScore
             // 
@@ -278,6 +314,7 @@
             this._menu.PerformLayout();
             this._panel.ResumeLayout(false);
             this._panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._square2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._square5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._square7)).EndInit();
@@ -314,5 +351,8 @@
         private PictureBox _square0;
         private Label _labelScore;
         private PictureBox _imageBoard;
+        private PictureBox pictureBox1;
+        private Button _buttonBomb;
+        private Label _labelBombs;
     }
 }
