@@ -209,8 +209,7 @@ namespace TicTacToe.Forms {
                     MessageBoxIcon.Error
                 );
                 return;
-            }
-            else {
+            } else {
                 bombMode = true;
 
                 new Account().UpdateAccount(account.Username, new Account() {
