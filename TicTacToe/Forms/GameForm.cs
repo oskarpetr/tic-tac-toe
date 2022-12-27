@@ -76,7 +76,7 @@ namespace TicTacToe.Forms {
                 if (game.CheckWinner(game.Board) != Game.Winner.NoWinner) {
                     WinForm win = new WinForm(game.CheckWinner(game.Board));
                     _winner = game.CheckWinner(game.Board);
-
+                    
                     win.Show();
 
                     int centerX = this.Left + (this.Width / 2) - (win.Width / 2);
@@ -91,8 +91,8 @@ namespace TicTacToe.Forms {
             }
 
             // ai makes move
+            Sleep(1000);
             MakeAIMove();
-
 
             // if player won
             if (game.CheckWinner(game.Board) != Game.Winner.NoWinner) {
@@ -104,6 +104,9 @@ namespace TicTacToe.Forms {
                 int centerX = this.Left + (this.Width / 2) - (win.Width / 2);
                 int centerY = this.Top + (this.Height / 2) - (win.Height / 2);
                 win.DesktopLocation = new Point(centerX, centerY);
+
+                win.OnHomeClicked += Win_OnHomeClicked;
+                win.OnNextClicked += Win_OnNextClicked;
 
                 return;
             }
