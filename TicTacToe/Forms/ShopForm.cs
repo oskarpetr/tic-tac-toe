@@ -27,6 +27,7 @@ namespace TicTacToe.Forms {
                 _labelScore.Text = $"{account.Score} Score ({account.GetLevel()} Level)";
             }
 
+            // set bombs
             _labelBombs.Text = $"{account.Bombs}x";
         }
 
@@ -65,6 +66,7 @@ namespace TicTacToe.Forms {
                 _labelScore.Text = $"{newAccount.Score} Score ({newAccount.GetLevel()} Level)";
             }
 
+            // set bombs
             _labelBombs.Text = $"{newAccount.Bombs}x";
         }
     }

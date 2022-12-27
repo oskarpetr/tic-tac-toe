@@ -21,12 +21,17 @@ namespace TicTacToe.Forms {
         }
 
         private void Init() {
-            if(_winner == Game.Winner.X) {
+            // x wins
+            if (_winner == Game.Winner.X) {
                 _labelTitle.Text = "You win!";
                 _labelSubtitle.Text = "You get +25 score.";
+            
+            // o wins
             } else if (_winner == Game.Winner.O) {
                 _labelTitle.Text = "You lose!";
                 _labelSubtitle.Text = "No score was won.";
+            
+            // draw
             } else if( _winner == Game.Winner.Draw) {
                 _labelTitle.Text = "It's a draw!";
                 _labelSubtitle.Text = "You get +10 score.";
