@@ -48,13 +48,13 @@ namespace TicTacToe.Forms {
 
             if(bombMode) {
                 square.Image = Properties.Resources.Bomb;
-                Sleep(1000);
+                new Sleep(1000);
 
                 using (var soundPlayer = new SoundPlayer("explosion.wav")) {
                     soundPlayer.Play();
                 }
 
-                Sleep(2000);
+                new Sleep(2000);
                 square.Image = null;
 
                 bombMode = false;
@@ -91,7 +91,7 @@ namespace TicTacToe.Forms {
             }
 
             // ai makes move
-            Sleep(1000);
+            new Sleep(1000);
             MakeAIMove();
 
             // if player won
@@ -112,15 +112,6 @@ namespace TicTacToe.Forms {
             }
 
             rounds++;
-        }
-
-        private void Sleep(int time) {
-            Thread thread = new Thread(delegate() {
-                System.Threading.Thread.Sleep(time);
-            });
-
-            thread.Start();
-            while (thread.IsAlive) Application.DoEvents();
         }
 
         private void Win_OnNextClicked() {
