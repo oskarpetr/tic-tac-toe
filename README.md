@@ -11,7 +11,8 @@ To begin a new game, select "New Game" from the main menu. A blank 3x3 grid will
 - if you win, you earn 25 points;
 - if the robot wins, you earn no points;
 - and if the game ends in a tie, you receive 10 points.
-  After the game ends, you can choose to start a new game or return to the main statistics page.
+
+After the game ends, you can choose to start a new game or return to the main statistics page.
 
 An interesting feature of this game is the ability to use "bombs" against your opponent. Bombs allow you to remove one of the robot's moves by placing them on its filled square. You can earn bombs after every four wins or purchase them in the "Shop" tab for 100 points each. The game is set to an easy difficulty level, making it relatively simple to win.
 
